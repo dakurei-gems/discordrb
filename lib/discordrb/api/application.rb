@@ -10,6 +10,7 @@ module Discordrb::API::Application
       nil,
       :get,
       "#{Discordrb::API.api_base}/applications/#{application_id}/commands",
+      nil,
       authorization: token
     )
   end
@@ -22,6 +23,7 @@ module Discordrb::API::Application
       nil,
       :get,
       "#{Discordrb::API.api_base}/applications/#{application_id}/commands/#{command_id}",
+      nil,
       authorization: token
     )
   end
@@ -62,6 +64,7 @@ module Discordrb::API::Application
       nil,
       :delete,
       "#{Discordrb::API.api_base}/applications/#{application_id}/commands/#{command_id}",
+      nil,
       authorization: token
     )
   end
@@ -88,6 +91,7 @@ module Discordrb::API::Application
       guild_id,
       :get,
       "#{Discordrb::API.api_base}/applications/#{application_id}/guilds/#{guild_id}/commands",
+      nil,
       authorization: token
     )
   end
@@ -100,6 +104,7 @@ module Discordrb::API::Application
       guild_id,
       :get,
       "#{Discordrb::API.api_base}/applications/#{application_id}/guilds/#{guild_id}/commands/#{command_id}",
+      nil,
       authorization: token
     )
   end
@@ -140,6 +145,7 @@ module Discordrb::API::Application
       guild_id,
       :delete,
       "#{Discordrb::API.api_base}/applications/#{application_id}/guilds/#{guild_id}/commands/#{command_id}",
+      nil,
       authorization: token
     )
   end
@@ -166,6 +172,7 @@ module Discordrb::API::Application
       guild_id,
       :get,
       "#{Discordrb::API.api_base}/applications/#{application_id}/guilds/#{guild_id}/commands/permissions",
+      nil,
       authorization: token
     )
   end

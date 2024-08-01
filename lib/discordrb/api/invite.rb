@@ -10,6 +10,7 @@ module Discordrb::API::Invite
       nil,
       :get,
       "#{Discordrb::API.api_base}/invites/#{invite_code}#{counts ? "?with_counts=true" : ""}",
+      nil,
       authorization: token
     )
   end
@@ -22,6 +23,7 @@ module Discordrb::API::Invite
       nil,
       :delete,
       "#{Discordrb::API.api_base}/invites/#{code}",
+      nil,
       authorization: token,
       x_audit_log_reason: reason
     )

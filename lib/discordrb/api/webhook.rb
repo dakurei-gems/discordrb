@@ -10,6 +10,7 @@ module Discordrb::API::Webhook
       nil,
       :get,
       "#{Discordrb::API.api_base}/webhooks/#{webhook_id}",
+      nil,
       authorization: token
     )
   end
@@ -84,6 +85,7 @@ module Discordrb::API::Webhook
       webhook_id,
       :delete,
       "#{Discordrb::API.api_base}/webhooks/#{webhook_id}",
+      nil,
       authorization: token,
       x_audit_log_reason: reason
     )
@@ -97,6 +99,7 @@ module Discordrb::API::Webhook
       webhook_id,
       :delete,
       "#{Discordrb::API.api_base}/webhooks/#{webhook_id}/#{webhook_token}",
+      nil,
       x_audit_log_reason: reason
     )
   end
