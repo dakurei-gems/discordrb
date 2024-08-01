@@ -13,7 +13,7 @@ module Discordrb::API::Interaction
       :post,
       "#{Discordrb::API.api_base}/interactions/#{interaction_id}/#{interaction_token}/callback",
       {type: type, data: data}.to_json,
-      content_type: :json
+      content_type: "application/json"
     )
   end
 
@@ -28,7 +28,7 @@ module Discordrb::API::Interaction
       :post,
       "#{Discordrb::API.api_base}/interactions/#{interaction_id}/#{interaction_token}/callback",
       {type: 9, data: data}.to_json,
-      content_type: :json
+      content_type: "application/json"
     )
   end
 
