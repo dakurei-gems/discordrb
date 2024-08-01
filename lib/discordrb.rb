@@ -1,3 +1,5 @@
+require "debug" if ENV.key?("RUBY_DEBUG_OPEN")
+
 require "discordrb/version"
 require "discordrb/bot"
 require "discordrb/commands/command_bot"
