@@ -100,7 +100,7 @@ module Discordrb::API
   rescue Faraday::ForbiddenError => e
     # HACK: for #request, dynamically inject faraday's response into NoPermission - this allows us to rate limit
     noprm = Discordrb::Errors::NoPermission.new
-    noprm.define_singleton_method(:_rc_response) { e.response }
+    noprm.define_singleton_method(:_frd_response) { e.response }
     raise noprm, "The bot doesn't have the required permission to do this!"
   rescue Faraday::ServerError
     Discordrb::LOGGER.warn("Got a 5xx while sending a request! Not a big deal, retrying the request")
@@ -141,10 +141,10 @@ module Discordrb::API
 
         raise e
       rescue Discordrb::Errors::NoPermission => e
-        if e.respond_to?(:_rc_response)
-          response = e._rc_response
+        if e.respond_to?(:_frd_response)
+          response = e._frd_response
         else
-          Discordrb::LOGGER.warn("NoPermission doesn't respond_to? _rc_response!")
+          Discordrb::LOGGER.warn("NoPermission doesn't respond_to? _frd_response!")
         end
 
         raise e
