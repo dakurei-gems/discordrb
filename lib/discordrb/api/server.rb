@@ -23,8 +23,8 @@ module Discordrb::API::Server
       :guilds_sid,
       server_id,
       :get,
-      "#{Discordrb::API.api_base}/guilds/#{server_id}#{"?with_counts=true" if with_counts}",
-      nil,
+      "#{Discordrb::API.api_base}/guilds/#{server_id}",
+      {with_counts: with_counts.is_a?(TrueClass) ? true : nil}.compact,
       authorization: token
     )
   end
@@ -130,13 +130,12 @@ module Discordrb::API::Server
   # Gets members from the server
   # https://discord.com/developers/docs/resources/guild#list-guild-members
   def resolve_members(token, server_id, limit, after = nil)
-    query_string = URI.encode_www_form({limit: limit, after: after}.compact)
     Discordrb::API.request(
       :guilds_sid_members,
       server_id,
       :get,
-      "#{Discordrb::API.api_base}/guilds/#{server_id}/members?#{query_string}",
-      nil,
+      "#{Discordrb::API.api_base}/guilds/#{server_id}/members",
+      {limit: limit, after: after}.compact,
       authorization: token
     )
   end
@@ -182,13 +181,12 @@ module Discordrb::API::Server
   # Get a server's banned users
   # https://discord.com/developers/docs/resources/guild#get-guild-bans
   def bans(token, server_id, limit = nil, before = nil, after = nil)
-    query_string = URI.encode_www_form({limit: limit, before: before, after: after}.compact)
     Discordrb::API.request(
       :guilds_sid_bans,
       server_id,
       :get,
-      "#{Discordrb::API.api_base}/guilds/#{server_id}/bans?#{query_string}",
-      nil,
+      "#{Discordrb::API.api_base}/guilds/#{server_id}/bans",
+      {limit: limit, before: before, after: after}.compact,
       authorization: token
     )
   end
@@ -348,8 +346,8 @@ module Discordrb::API::Server
       :guilds_sid_prune,
       server_id,
       :get,
-      "#{Discordrb::API.api_base}/guilds/#{server_id}/prune?days=#{days}",
-      nil,
+      "#{Discordrb::API.api_base}/guilds/#{server_id}/prune",
+      {days: days},
       authorization: token
     )
   end
@@ -389,8 +387,8 @@ module Discordrb::API::Server
       :guilds_sid_auditlogs,
       server_id,
       :get,
-      "#{Discordrb::API.api_base}/guilds/#{server_id}/audit-logs?limit=#{limit}#{"&user_id=#{user_id}" if user_id}#{"&action_type=#{action_type}" if action_type}#{"&before=#{before}" if before}",
-      nil,
+      "#{Discordrb::API.api_base}/guilds/#{server_id}/audit-logs",
+      {limit: limit, user_id: user_id, action_type: action_type, before: before}.compact,
       authorization: token
     )
   end
