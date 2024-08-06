@@ -113,7 +113,7 @@ module Discordrb
     # @example Execute the webhook with kwargs
     #   client.execute(
     #     content: 'Testing',
-    #     username: 'discordrb',
+    #     username: 'rubylib',
     #     embeds: [
     #       { timestamp: Time.now.iso8601, title: 'testing', image: { url: 'https://i.imgur.com/PcMltU7.jpg' } }
     #     ])
@@ -123,7 +123,7 @@ module Discordrb
     # @example Execute the webhook by building a new message
     #   client.execute do |builder|
     #     builder.content = 'Testing'
-    #     builder.username = 'discordrb'
+    #     builder.username = 'rubylib'
     #     builder.add_embed do |embed|
     #       embed.timestamp = Time.now
     #       embed.title = 'Testing'

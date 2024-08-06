@@ -41,7 +41,7 @@ module Discordrb::Webhooks
     # @example Execute the webhook by building a new message
     #   client.execute do |builder, view|
     #     builder.content = 'Testing'
-    #     builder.username = 'discordrb'
+    #     builder.username = 'rubylib'
     #     builder.add_embed do |embed|
     #       embed.timestamp = Time.now
     #       embed.title = 'Testing'
