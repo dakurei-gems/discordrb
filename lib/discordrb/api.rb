@@ -135,7 +135,7 @@ module Discordrb::API
       rescue Faraday::Error => e
         response = e.response
 
-        if response[:body] && !e.is_a?(Faraday::TooManyRequestsError)
+        if response&.[](:body) && !e.is_a?(Faraday::TooManyRequestsError)
           data = JSON.parse(response[:body])
           err_klass = Discordrb::Errors.error_class_for(data["code"] || 0)
           e = err_klass.new(data["message"], data["errors"])
