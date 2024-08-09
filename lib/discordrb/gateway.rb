@@ -531,7 +531,7 @@ module Discordrb
     end
 
     def find_gateway
-      response = API.gateway(@token)
+      response = (@bot.type == :bot) ? API.gateway_bot(@token) : API.gateway(@token)
       JSON.parse(response)["url"]
     end
 
