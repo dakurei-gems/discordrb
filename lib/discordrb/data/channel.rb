@@ -130,7 +130,7 @@ module Discordrb
           @name = @recipients.first.username
         else
           @name = data["name"]
-          @owner_id = data["owner_id"]
+          @owner_id = data["owner_id"].resolve_id
         end
       else
         @name = data["name"]
@@ -925,7 +925,8 @@ module Discordrb
       @user_limit = new_data[:user_limit] || new_data["user_limit"] || @user_limit
       new_nsfw = new_data.key?(:nsfw) ? new_data[:nsfw] : new_data["nsfw"]
       @nsfw = new_nsfw.nil? ? @nsfw : new_nsfw
-      @parent_id = new_data[:parent_id] || new_data["parent_id"] || @parent_id
+      parent_id = new_data[:parent_id] || new_data["parent_id"] || @parent_id
+      @parent_id = parent_id&.resolve_id
       process_permission_overwrites(new_data[:permission_overwrites] || new_data["permission_overwrites"])
       @rate_limit_per_user = new_data[:rate_limit_per_user] || new_data["rate_limit_per_user"] || @rate_limit_per_user
     end
