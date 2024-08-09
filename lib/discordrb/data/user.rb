@@ -114,7 +114,7 @@ module Discordrb
 
       @username = data["username"]
       @global_name = data["global_name"]
-      @id = data["id"].to_i
+      @id = data["id"].resolve_id
       @discriminator = data["discriminator"]
       @avatar_id = data["avatar"]
       @roles = {}
